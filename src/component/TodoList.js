@@ -4,11 +4,12 @@ import TodoListItem from "./TodoListItem";
 import { media } from "./MediaQuery";
 
 const TodoListArea = styled.div`
-  width: 550px;
+  width: 500px;
   height: 600px;
   margin: 30px auto 0;
-  overflow: auto;
-  ${media.mobile`width:80%`}
+  overflow-x: hidden;
+  overflow-y: auto;
+  ${media.mobile`width:80%; height:400px;`}
   &::-webkit-scrollbar {
     width: 10px;
     background-color: transparent;
@@ -25,7 +26,7 @@ const TodoListArea = styled.div`
 function TodoList({ todos, onRemove, onToggle }) {
   return (
     <TodoListArea>
-      {todos.map((todo) => {
+      {todos?.map((todo) => {
         return (
           <TodoListItem
             todo={todo}

@@ -41,8 +41,10 @@ export default function TodoInsert({ onInsert }) {
   }, []);
 
   const inputEl = useRef();
+
   const onSubmit = useCallback(
     (e) => {
+      e.preventDefault();
       if (value.trim()) {
         onInsert(value);
         setValue("");
@@ -50,10 +52,16 @@ export default function TodoInsert({ onInsert }) {
       } else {
         alert("내용을 입력해주세요");
       }
-      e.preventDefault();
     },
     [onInsert, value]
   );
+
+  const onBlur = useCallback(() => {
+    if (value.trim()) {
+      return;
+    }
+    setValue("");
+  }, [value]);
 
   return (
     <TodoInsertArea onSubmit={onSubmit}>
@@ -63,6 +71,7 @@ export default function TodoInsert({ onInsert }) {
         placeholder="입력후에 엔터를 누르세요"
         value={value}
         onChange={onChange}
+        onBlur={onBlur}
       />
     </TodoInsertArea>
   );
