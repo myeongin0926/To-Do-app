@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
+import { media } from "./MediaQuery";
 
 const TodoTimeArea = styled.div`
   text-align: center;
@@ -8,33 +9,26 @@ const TodoTimeArea = styled.div`
   margin: 50px auto 0;
   color: #ffffff;
   cursor: pointer;
-  @media (max-width: 640px) {
-    width: 80%;
-  }
+  ${media.mobile`width: 90%`}
   .date {
     margin-top: 10px;
     font-size: 40px;
     opacity: 0.8;
-    @media (max-width: 640px) {
-      width: 150px;
-      font-size: 15px;
-      margin: 0 auto;
-      opacity: 1;
-    }
+    ${media.mobile`height:       
+    width: 150px;
+    font-size: 15px;
+    margin: 0 auto;
+    opacity:1;`}
     &:hover {
       opacity: 1;
     }
     .small-date {
       font-size: 20px;
-      @media (max-width: 640px) {
-        font-size: 10px;
-      }
+      ${media.mobile`font-size:10px`}
     }
     .small-date:nth-child(2) {
       margin-right: 50px;
-      @media (max-width: 640px) {
-        margin-right: 0px;
-      }
+      ${media.mobile`margin-right:0px`}
     }
   }
   .todo {
@@ -44,12 +38,11 @@ const TodoTimeArea = styled.div`
     border-bottom: 1px solid;
     font-size: 60px;
     animation: textTwinkling 1.5s alternate infinite linear;
-    @media (max-width: 640px) {
+    ${media.mobile`
       font-size: 45px;
       border-bottom: none;
-      width: 150px;
-      margin: 0 auto;
-    }
+      width: 120px;
+      margin: 0 auto;`}
   }
 
   @keyframes textTwinkling {

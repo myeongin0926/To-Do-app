@@ -1,14 +1,13 @@
-import { MdAdd } from "react-icons/md";
 import styled from "styled-components";
 import React, { useCallback, useState, useRef } from "react";
+import { media } from "./MediaQuery";
 
 const TodoInsertArea = styled.form`
   display: flex;
   width: 500px;
   margin: 15px auto 0;
-  @media (max-width: 640px) {
-    width: 80%;
-  }
+  ${media.mobile`width: 80%;`}
+
   input {
     background-color: transparent;
     outline: none;
@@ -23,15 +22,14 @@ const TodoInsertArea = styled.form`
     &:focus {
       border: 1px solid rgba(255, 255, 255, 0.8);
     }
-    @media (max-width: 640px) {
-      padding-left: 10px;
+    ${media.mobile`      
+      padding-left: 20px;
       width: 90%;
       min-width: 150px;
       height: 30px;
       line-height: 30px;
       font-size: 13px;
-      border-radius: 0px;
-    }
+      `}
   }
 `;
 

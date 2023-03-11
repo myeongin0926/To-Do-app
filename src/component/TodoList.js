@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import TodoListItem from "./TodoListItem";
+import { media } from "./MediaQuery";
 
 const TodoListArea = styled.div`
   width: 550px;
   height: 600px;
   margin: 30px auto 0;
   overflow: auto;
+  ${media.mobile`width:80%`}
   &::-webkit-scrollbar {
     width: 10px;
     background-color: transparent;

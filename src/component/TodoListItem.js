@@ -5,29 +5,30 @@ import {
   MdRemoveCircleOutline,
 } from "react-icons/md";
 import styled from "styled-components";
+import { media } from "./MediaQuery";
 
 const TodoListItemArea = styled.div`
+  width: 460px;
   padding: 15px;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
+  opacity: ${(props) => (props.check ? ".5" : "1")};
   &:hover {
-    background-color: ${(props) =>
-      props.check ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.3)"};
-    .remove {
-      display: initial;
-    }
+    ${media.mobile`background-color:rgba(255, 255, 255, 0.0)`}
   }
+  ${media.mobile`width:90%`}
   color: white;
   .remove {
     display: flex;
     align-items: center;
     font-size: 25px;
     color: white;
-    display: none;
     transition: 0.2s;
+    ${media.mobile`font-size:20px`}
     &:hover {
       color: red;
+      ${media.mobile`color:white`}
     }
   }
 `;
@@ -37,13 +38,15 @@ const CheckBox = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
-  opacity: ${(props) => (props.check ? 0.5 : 1)};
+
   svg {
     font-size: 28px;
+    ${media.mobile`font-size:22px`}
   }
   .text {
     margin-left: 10px;
     flex: 1;
+    ${media.mobile`font-size:16px`}
   }
 `;
 
