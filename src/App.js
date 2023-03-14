@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import TodoTemplate from "./component/TodoTemplate";
 import TodoTime from "./component/TodoTime";
 import TodoInsert from "./component/TodoInsert";
@@ -6,6 +6,13 @@ import TodoList from "./component/TodoList";
 
 function App() {
   const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    if (localStorage.getItem("todos")) {
+      const localGetTodos = JSON.parse(localStorage.getItem("todos"));
+      setTodos(localGetTodos);
+    }
+  }, []);
 
   const onInsert = useCallback(
     (text) => {
@@ -20,20 +27,36 @@ function App() {
     [todos]
   );
 
-  const onRemove = useCallback((id) => {
-    const deleteTodo = (todos) => todos.filter((todo) => todo.id !== id);
-    setTodos(deleteTodo);
-    localStorage.setItem("todos", JSON.stringify(deleteTodo));
-  }, []);
-
-  const onToggle = useCallback((id) => {
-    const checkSwitch = (todos) =>
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, checked: !todo.checked } : todo
+  const onRemove = useCallback(
+    (id) => {
+      const deleteTodo = (todos) => todos.filter((todo) => todo.id !== id);
+      setTodos(deleteTodo);
+      localStorage.setItem(
+        "todos",
+        JSON.stringify(todos.filter((todo) => todo.id !== id))
       );
-    setTodos(checkSwitch);
-    localStorage.setItem("todos", JSON.stringify(checkSwitch));
-  }, []);
+    },
+    [todos]
+  );
+
+  const onToggle = useCallback(
+    (id) => {
+      const checkSwitch = (todos) =>
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, checked: !todo.checked } : todo
+        );
+      setTodos(checkSwitch);
+      localStorage.setItem(
+        "todos",
+        JSON.stringify(
+          todos.map((todo) =>
+            todo.id === id ? { ...todo, checked: !todo.checked } : todo
+          )
+        )
+      );
+    },
+    [todos]
+  );
 
   return (
     <div>
