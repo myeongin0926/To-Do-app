@@ -1,0 +1,54 @@
+.header {
+  padding: 20px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px 10px 0 0;
+}
+
+.header .mode {
+  font-size: 25px;
+  cursor: pointer;
+  color: white;
+  border: none;
+  background-color: transparent;
+}
+
+.header .list {
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+}
+
+.header .list .filter {
+  background-color: transparent;
+  border: none;
+  text-transform: capitalize;
+  font-size: 17px;
+  padding: 5px 10px;
+  transition: 0.2s;
+  opacity: 0.3;
+  font-weight: bold;
+  color: white;
+}
+
+.header .list .filter.selected {
+  opacity: 1;
+}
+
+.header .list .filter:hover {
+  opacity: 1;
+}
+
+.header .filter.selected::after {
+  content: "";
+  display: block;
+  margin-top: 0.2rem;
+  background-color: white;
+  height: 3px;
+}
+
+.header.night {
+  background-color: transparent;
+}

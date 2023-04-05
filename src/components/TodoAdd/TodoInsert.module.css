@@ -1,0 +1,49 @@
+.addForm {
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 0 0 10px 10px;
+}
+
+.addForm input {
+  height: 40px;
+  width: 80%;
+  padding: 7px;
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: 3px;
+  background-color: transparent;
+  font-size: 16px;
+  line-height: 40px;
+  letter-spacing: 1px;
+  color: white;
+}
+.addForm input::placeholder {
+  color: white;
+}
+
+.addForm input:focus {
+  outline: none;
+}
+
+.addForm button {
+  font-size: 16px;
+  height: 40px;
+  width: 65px;
+  margin-left: 5px;
+  background-color: transparent;
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.15s;
+  color: white;
+}
+
+.addForm button:hover {
+  background-color: rgb(160, 160, 160);
+}
+
+.addForm button:active {
+  background-color: rgb(140, 140, 140);
+  color: white;
+}

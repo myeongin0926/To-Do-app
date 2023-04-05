@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import uuid from "react-uuid";
 import styles from "./TodoInsert.module.css";
 
 const TodoInsert = (props) => {
@@ -10,24 +11,24 @@ const TodoInsert = (props) => {
     if (text.trim().length) {
       props.todoAdd({
         text,
-        checked: false,
-        complete: false,
-        id: Math.random(),
+        status: "active",
+        id: uuid(),
       });
       setText("");
     }
   };
   return (
-    <div className={styles.todoInsert}>
-      <form action="" onSubmit={submitHandler}>
+    <>
+      <form action="" onSubmit={submitHandler} className={styles.addForm}>
         <input
           type="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
+          placeholder="Add Todo"
         />
         <button type="submit">Add</button>
       </form>
-    </div>
+    </>
   );
 };
 
