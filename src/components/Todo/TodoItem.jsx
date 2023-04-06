@@ -13,12 +13,12 @@ const TodoItem = ({ todo, onUpdate, onRemove }) => {
     <div className={styles.todo}>
       <input
         type="checkbox"
-        id="checkbox"
+        id={id}
         checked={status === "completed"}
         onChange={handleChange}
         className={styles.check}
       />
-      <label htmlFor="checkbox" className={styles.todoLabel}>
+      <label htmlFor={id} className={styles.todoLabel}>
         <span>{text}</span>
       </label>{" "}
       <button
